@@ -12,8 +12,7 @@ class CurrentWeather extends StatelessWidget{
       child:Center(
         child:Column(
         children: <Widget>[
-        Text(
-              
+        Text(     
               ' 27°',        
               style: TextStyle(
                 fontFamily: "monospace",
