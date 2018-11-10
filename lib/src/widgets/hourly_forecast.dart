@@ -1,17 +1,58 @@
 import 'package:flutter/material.dart';
+import '../models/hourly_weather.dart';
+import '../models/api.dart';
 
-class HourlyForecast extends StatelessWidget {
+class HourlyForecast extends StatefulWidget {
+  @override
+  _HourlyForecastState createState() => _HourlyForecastState();
+}
 
-  Widget forecast(String time, int temp){
+class _HourlyForecastState extends State<HourlyForecast> {
+
+  List<HourlyWeatherModel> hourlyForecast = [];
+
+  fetchHourlyForecast() async{
+    var forecast = await ApiConfig.fetchHourlyWeather(); 
+    setState(() {
+      hourlyForecast = forecast; 
+    });
+  }
+
+  
+  Widget _forecast(HourlyWeatherModel forecast){
     return Expanded(
       child: Column(
         children: <Widget>[
-          Text(time),
-          Container(margin: EdgeInsets.only(top:15.0),),
-          Text("$temp°")
+          Text(
+            forecast.time,
+             style: TextStyle(
+              fontSize: 11.5
+            ),
+          ),
+          Container(margin: EdgeInsets.only(top:25.0),),
+          Text(
+            "${forecast.temp}°",
+            style: TextStyle(
+              fontSize: 18.0
+            ),
+          )
         ],
       ),
     );
+  }
+
+  listBuilder(){
+    List<Widget> list=[];
+    for(int i = 0; i < hourlyForecast.length;i++){
+      list.add(_forecast(hourlyForecast[i]));
+    }
+    return list;
+  }
+
+ @override
+  void initState(){
+    super.initState();
+    fetchHourlyForecast();
   }
 
   Widget build(BuildContext context) {
@@ -20,13 +61,7 @@ class HourlyForecast extends StatelessWidget {
       margin: EdgeInsets.all(20.0),
       padding: EdgeInsets.only(top:15.0),
       child: Row(
-        children: <Widget>[
-          forecast('Now', 27),
-          forecast('2.00pm', 28),
-          forecast('5.00pm', 27),
-          forecast('8.00pm', 25),
-          forecast('11.00pm', 23)
-        ],
+        children:listBuilder()
       ),
     );
   }

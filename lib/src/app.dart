@@ -6,6 +6,8 @@ import 'dart:convert';
 
 import './screens/home_screen.dart';
 import './models/current_weather.dart';
+import './models/hourly_weather.dart';
+import './models/api.dart';
 
 class App extends StatefulWidget {
   @override

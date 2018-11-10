@@ -12,15 +12,29 @@ class HomeScreen extends StatelessWidget{
 
   Widget build(BuildContext context){
     print(currentWeather);
-    return Container(
-      child:Column(
-        children: <Widget>[
-          CurrentWeather(currentWeather),
-          Container(margin: EdgeInsets.only(top:10.0),),
-          HourlyForecast(),
-          WeeklyForecast()
-        ],
-      )
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints viewportConstraints) {
+        return SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: viewportConstraints.maxHeight,
+            ),
+          child: Container(
+            child:Column(
+              children: <Widget>[
+                CurrentWeather(currentWeather),
+                Container(margin: EdgeInsets.only(top:10.0),),
+                HourlyForecast(),
+                Container(margin: EdgeInsets.only(top:5.0),),
+                WeeklyForecast()
+              ],
+            )
+          ),
+        ),
+      );
+    },
     );
+    
+
   }
 }

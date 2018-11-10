@@ -4,7 +4,7 @@ class WeeklyForecast extends StatelessWidget {
 
   Widget forecast(String day,int tempLow,int tempHigh){
     return Container(
-      margin: EdgeInsets.all(20.0),
+      margin: EdgeInsets.only(left:20.0,right:20.0,bottom: 10.0),
       padding: EdgeInsets.all(15.0),
       decoration: BoxDecoration(
         border: BorderDirectional(
@@ -41,11 +41,11 @@ class WeeklyForecast extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      children: <Widget>[
+    return Column(children: <Widget>[
         forecast('Tomorrow,Nov 10', 18, 27),
-      ],
-    );
+        forecast('Tomorrow,Nov 10', 18, 27),
+        forecast('Tomorrow,Nov 10', 18, 27),
+        forecast('Tomorrow,Nov 10', 18, 27),
+    ]);
   }
 }
