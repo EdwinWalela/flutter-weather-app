@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import '../models/current_weather.dart';
 
 class CurrentWeather extends StatelessWidget{
+  
+  final List<CurrentWeatherModel> currentWeather;
+
+  CurrentWeather(this.currentWeather);
+
   Widget build(BuildContext context){
     return Container(
       margin: EdgeInsets.only(top: 50.0,bottom: 20.0,left: 20.0,right: 20.0),
@@ -9,7 +15,7 @@ class CurrentWeather extends StatelessWidget{
         child:Column(
         children: <Widget>[
         Text(     
-              ' 27°',        
+              currentWeather.length == 0 ? '' : ' ${currentWeather[0].temp}°',    
               style: TextStyle(
                 fontFamily: "monospace",
                 fontSize: 90.0,  
@@ -17,14 +23,14 @@ class CurrentWeather extends StatelessWidget{
             ),
           Container(margin: EdgeInsets.all(10.0),),
           Text(
-            'Partly cloudy',      
+             currentWeather.length == 0 ? '' : ' ${currentWeather[0].description}',      
               style: TextStyle(
                 fontSize: 20.0,  
               ),
             ),
           Container(margin: EdgeInsets.all(10.0),),
           Text(
-            '28° / 16°',
+             currentWeather.length == 0 ? '' : ' ${currentWeather[0].tempMax}° / ${currentWeather[0].tempMin}° ',
             style:TextStyle(
               fontSize: 16.0
             )
