@@ -5,6 +5,7 @@ import './screens/home_screen.dart';
 class App extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
+      debugShowCheckedModeBanner: true,
       home:Scaffold(
         appBar:AppBar(
           title:Text(
