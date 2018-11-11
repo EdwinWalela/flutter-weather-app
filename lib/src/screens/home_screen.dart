@@ -22,9 +22,8 @@ class HomeScreen extends StatelessWidget{
             child:Column(
               children: <Widget>[
                 CurrentWeather(currentWeather),
-                Container(margin: EdgeInsets.only(top:10.0),),
+                Container(margin: EdgeInsets.only(top:20.0),),
                 HourlyForecast(),
-                Container(margin: EdgeInsets.only(top:5.0),),
               ],
             )
           ),

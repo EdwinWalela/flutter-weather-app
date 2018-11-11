@@ -26,14 +26,16 @@ class _HourlyForecastState extends State<HourlyForecast> {
           Text(
             forecast.time,
              style: TextStyle(
-              fontSize: 11.5
+              fontSize: 11.5,
+              color: Colors.white,
             ),
           ),
           Container(margin: EdgeInsets.only(top:25.0),),
           Text(
             "${forecast.temp}°",
             style: TextStyle(
-              fontSize: 18.0
+              fontSize: 18.0,
+              color: Colors.white,
             ),
           )
         ],
@@ -57,7 +59,7 @@ class _HourlyForecastState extends State<HourlyForecast> {
 
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(border:BorderDirectional(top:BorderSide(color:Colors.black,width: 0.8))),
+      decoration: BoxDecoration(border:BorderDirectional(top:BorderSide(color:Colors.white54,width: 2.5))),
       margin: EdgeInsets.all(20.0),
       padding: EdgeInsets.only(top:15.0),
       child: Row(

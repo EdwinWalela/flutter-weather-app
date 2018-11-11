@@ -20,7 +20,7 @@ class _AppState extends State<App> {
   var appbarTitle = Text(
     '...',
     style: TextStyle(
-      color: Colors.black,
+      color: Colors.white,
       letterSpacing: 1.6
       ),
     );
@@ -52,8 +52,11 @@ class _AppState extends State<App> {
     appbarTitle = Text(
       result['name'],
       style: TextStyle(
-        color: Colors.black,
-        letterSpacing: 1.6
+        color: Colors.white,
+        fontFamily:"sanserif",
+        fontWeight: FontWeight.w300,
+        letterSpacing: 1.6,
+        fontSize:15.0
         ),
       );
     setState(()=>currentWeather.add(weather));
@@ -68,15 +71,28 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       home:Scaffold(
-        appBar:AppBar(
-          title:appbarTitle,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        elevation: 0.3,
+      floatingActionButton:RaisedButton(
+        child: Icon(
+          Icons.refresh,
+          ),
+        onPressed: (){
+          fetchCurrentWeather();
+        },
+      ),
+      body: Stack(
+      children: <Widget>[
+         Container(
+          decoration: BoxDecoration(
+            image:  DecorationImage(image: NetworkImage("https://images.unsplash.com/photo-1446435210126-bfa18ee3b7a1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3566466d76117e29ffb4160a639748fb&auto=format&fit=crop&w=1202&q=80"), fit: BoxFit.cover,),
+          ),
         ),
-      body: HomeScreen(currentWeather),
+         Center(
+          child:HomeScreen(currentWeather),
+        )
+      ],
+    )
       )
     );
   }
