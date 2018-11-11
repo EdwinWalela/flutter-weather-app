@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:http/http.dart' show get;
 import 'dart:async';
 import 'dart:convert';
@@ -15,7 +16,6 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  
   List<CurrentWeatherModel> currentWeather = [];
   var appbarTitle = Text(
     '...',
@@ -35,6 +35,7 @@ class _AppState extends State<App> {
     String APIKEY = '9d646800231533d6e07ae7d77f155987';
     double lon = currentLocation['longitude'];
     double lat = currentLocation['latitude'];
+    double elevetion = (currentLocation['altitude']).roundToDouble();
     String URI = 'https://api.openweathermap.org/data/2.5/weather?&appid=$APIKEY&lat=$lat&lon=$lon';
    
     var response = await get(URI);
@@ -46,7 +47,7 @@ class _AppState extends State<App> {
     int tempMax = int.parse('${(result['main']['temp_max']-273).round()}');
     String desc =  result['weather'][0]['description'];
     
-    var weather = CurrentWeatherModel.fromJson(name,temp,tempMin,tempMax,desc);
+    var weather = CurrentWeatherModel.fromJson(name,temp,tempMin,tempMax,desc,elevetion);
 
     appbarTitle = Text(
       result['name'],

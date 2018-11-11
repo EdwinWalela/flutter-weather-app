@@ -7,16 +7,17 @@ import '../models/hourly_weather.dart';
 
 class ApiConfig {
 
-   
+      static String _APIKEY = '9d646800231533d6e07ae7d77f155987';
+      static var location;
+      static Map<String, double> currentLocation;
 
   static fetchHourlyWeather() async{
-    String _APIKEY = '9d646800231533d6e07ae7d77f155987';
-    var location = new Location();
-    Map<String, double> currentLocation = await location.getLocation();
+    location = new Location();
+    currentLocation = await location.getLocation();
     double lon = currentLocation['longitude'];
     double lat = currentLocation['latitude'];
     String URI = 'https://api.openweathermap.org/data/2.5/forecast?&appid=$_APIKEY&lat=$lat&lon=$lon';
-     print(URI);
+    
     var response = await get(URI);
     var result = json.decode(response.body);
 
@@ -28,7 +29,6 @@ class ApiConfig {
       var forecast = new HourlyWeatherModel(time,temp);
       hourlyForecast.add(forecast);
     }
-
     return hourlyForecast;
   }
 }

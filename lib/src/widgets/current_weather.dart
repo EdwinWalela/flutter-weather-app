@@ -15,10 +15,11 @@ class CurrentWeather extends StatelessWidget{
         child:Column(
         children: <Widget>[
         Text(     
-              currentWeather.length == 0 ? '' : ' ${currentWeather[0].temp}°',    
+              currentWeather.length == 0 ? '' : '  ${currentWeather[0].temp}°',    
               style: TextStyle(
-                fontFamily: "monospace",
-                fontSize: 90.0,  
+                fontFamily: "sanserif",
+                fontWeight: FontWeight.w200,
+                fontSize: 100.0,  
               ),
             ),
           Container(margin: EdgeInsets.all(10.0),),
@@ -30,7 +31,7 @@ class CurrentWeather extends StatelessWidget{
             ),
           Container(margin: EdgeInsets.all(10.0),),
           Text(
-             currentWeather.length == 0 ? '' : ' ${currentWeather[0].tempMax}° / ${currentWeather[0].tempMin}° ',
+             currentWeather.length == 0 ? '' : ' ${currentWeather[0].altitude} m',
             style:TextStyle(
               fontSize: 16.0
             )
