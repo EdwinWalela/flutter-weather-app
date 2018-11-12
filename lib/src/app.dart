@@ -8,9 +8,9 @@ class App extends StatelessWidget{
     var hour = DateTime.now().hour;
     String imgUrl;
     if(hour > 6 && hour < 18 ){
-     imgUrl = 'https://images.unsplash.com/photo-1446435210126-bfa18ee3b7a1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3566466d76117e29ffb4160a639748fb&auto=format&fit=crop&w=1202&q=80';
+     imgUrl = 'assets/images/day.jpg';
     }else{
-     imgUrl = 'https://images.pexels.com/photos/176851/pexels-photo-176851.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
+     imgUrl = 'assets/images/night.jpg';
     }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -19,7 +19,7 @@ class App extends StatelessWidget{
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
-                image:  DecorationImage(image: NetworkImage(imgUrl), fit: BoxFit.fill,),
+                image:  DecorationImage(image: AssetImage(imgUrl), fit: BoxFit.fill,),
               ),
             ),
             Center(

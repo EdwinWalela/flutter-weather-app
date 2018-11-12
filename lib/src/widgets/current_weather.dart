@@ -31,16 +31,28 @@ getLastUpdate(){
       child:Center(
         child:Column(
         children: <Widget>[
-        Container(margin: EdgeInsets.all(20.0),),
-        Text(     
+          Text(     
+              currentWeather.length == 0 ? '' : '  ${currentWeather[0].location}',    
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: "sanserif",
+                fontWeight: FontWeight.w200,
+                fontSize: 20.0,  
+              ),
+            ),
+        Container(margin: EdgeInsets.only(top:15.0),),
+        Container(
+          margin:EdgeInsets.only(left:15.0),
+          child:Text(     
               currentWeather.length == 0 ? '' : ' ${currentWeather[0].temp}°',    
               style: TextStyle(
                 color: Colors.white,
                 fontFamily: "sanserif",
                 fontWeight: FontWeight.w200,
-                fontSize: 100.0,  
+                fontSize: 110.0,  
               ),
             ),
+        ),
           Container(margin: EdgeInsets.all(20.0),),
           Text(
              currentWeather.length == 0 ? '' : ' ${currentWeather[0].description}',      
@@ -58,7 +70,7 @@ getLastUpdate(){
             )
           ),
           Container(margin: EdgeInsets.only(top:50.0),),
-          Text(currentWeather.length == 0 ? '' : ' Last updated ${getLastUpdate()}',
+          Text(currentWeather.length == 0 ? 'Waiting for internet connection' : ' Last updated ${getLastUpdate()}',
             style:TextStyle(
                 color: Colors.white,
                 fontSize: 10.0
