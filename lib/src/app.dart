@@ -7,12 +7,21 @@ class App extends StatelessWidget{
   Widget build(BuildContext context) {
     var hour = DateTime.now().hour;
     String imgUrl;
-    if(hour > 6 && hour < 18 ){
-     imgUrl = 'assets/images/day.jpg';
+    if(hour > 5 && hour < 8){
+      //sunrise
+      imgUrl = 'assets/images/sunrise.jpeg';
+    }else if (hour >= 8 && hour < 17){
+      //day
+       imgUrl = 'assets/images/day.jpg';
+    }else if(hour >= 17 && hour < 20){
+      //sunset
+       imgUrl = 'assets/images/sunset.jpeg';
     }else{
-     imgUrl = 'assets/images/night.jpg';
+      //night
+      imgUrl = 'assets/images/night.jpeg';
     }
     return MaterialApp(
+      title: '24 weather',
       debugShowCheckedModeBanner: false,
       home:Scaffold(
         body: Stack(

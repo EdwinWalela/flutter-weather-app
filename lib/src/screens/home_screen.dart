@@ -57,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
+      displacement: 50.0,
       onRefresh:_handleRefresh,
       child: SingleChildScrollView(
         physics: AlwaysScrollableScrollPhysics(),

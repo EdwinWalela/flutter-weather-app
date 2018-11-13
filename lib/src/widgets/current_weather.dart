@@ -18,7 +18,6 @@ getLastUpdate(){
     if(getTime(currentWeather[0].timestamp)>60){
       return '${(getTime(currentWeather[0].timestamp)/60).round()} hour(s) ago';
     }else{
-      print(getTime(currentWeather[0].timestamp));
       return '${(getTime(currentWeather[0].timestamp))} minutes ago';
     }
 }
