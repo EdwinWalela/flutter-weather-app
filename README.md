@@ -1,8 +1,5 @@
 # weatherapp
 
-A new Flutter project.
-
 ## Getting Started
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+Install the application by locating the output folder and downloading the `app-release.apk`
